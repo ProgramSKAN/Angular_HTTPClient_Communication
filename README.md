@@ -48,3 +48,13 @@ Manipulate HTTP requests before they're sent to the server
 Manipulate HTTP responses before they're returned to your app
 
 uses::Adding headers to all requests,Logging,reporting progress events,client-side caching
+
+## Caching HTTP Requests with Interceptors
+
+Reduced network utilization,
+Reduced load on backends,
+improved responsiveness of the end user
+
+## testing
+
+npm test
