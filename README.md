@@ -28,6 +28,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Resolvers
+
 used to fetch data before navigation to route,
 
 prevent presentation of empty component,
@@ -35,3 +36,15 @@ prevent presentation of empty component,
 prevent routing component with errors,
 
 provide better user experience
+
+better to use it if whole route depends on single request, because it is not good to hold the whole route because just 1 request is taking time
+
+## Interceptors
+
+Implements HTTPInterceptor interface
+
+Manipulate HTTP requests before they're sent to the server
+
+Manipulate HTTP responses before they're returned to your app
+
+uses::Adding headers to all requests,Logging,reporting progress events,client-side caching
