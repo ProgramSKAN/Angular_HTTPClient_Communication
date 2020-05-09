@@ -1,3 +1,4 @@
+import { OldBook } from './../models/OldBook';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,6 +24,10 @@ export class EditBookComponent implements OnInit {
         (data: Book) => this.selectedBook = data,
         (err: any) => console.log(err),
         () => console.log('complete')
+      );
+    this.dataService.getOldBookById(bookID)
+      .subscribe(
+        (data: OldBook) => console.log(`old book title: ${data.bookTitle}`)
       );
   }
 
