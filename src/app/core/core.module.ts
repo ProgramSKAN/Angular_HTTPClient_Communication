@@ -9,6 +9,7 @@ import { PlainLoggerService } from "./plain-logger.service";
 import { throwIfAlreadyLoaded } from "app/core/module-import-guard";
 import { BookTrackerErrorHandlerService } from './book-tracker-error-handler.service';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { CacheInterceptor } from './cache.interceptor';
 
 
 @NgModule({
@@ -20,8 +21,9 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
     LoggerService,
     DataService,
     { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService },
-    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true }//order of the interceptors matters
-    { provide: HTTP_INTERCEPTORS, useClass: LogResponseInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },//order of the interceptors matters
+    { provide: HTTP_INTERCEPTORS, useClass: LogResponseInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }
   ]
 })
 export class CoreModule {
