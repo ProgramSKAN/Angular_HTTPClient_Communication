@@ -1,3 +1,4 @@
+import { LogResponseInterceptor } from './log-response.interceptor';
 import { AddHeaderInterceptor } from './add-header.interceptor';
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,8 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
     LoggerService,
     DataService,
     { provide: ErrorHandler, useClass: BookTrackerErrorHandlerService },
-    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true }//order of the interceptors matters
+    { provide: HTTP_INTERCEPTORS, useClass: LogResponseInterceptor, multi: true }
   ]
 })
 export class CoreModule {
